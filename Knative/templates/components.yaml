@@ -1,0 +1,34 @@
+# Install serving
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-serving
+---
+apiVersion: operator.knative.dev/v1alpha1
+kind: KnativeServing
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+spec:
+  ingress:
+    kourier:
+      enabled: true
+  config:
+    network:
+      ingress.class: "kourier.ingress.networking.knative.dev"
+    # TODO Setup Real DNS provider here (https://knative.dev/v0.22-docs/install/knative-with-operators/#serving_dns-1) & update Helm Flow Control
+    # domain:
+    # DNS
+
+---
+# Install eventing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-eventing
+---
+apiVersion: operator.knative.dev/v1alpha1
+kind: KnativeEventing
+metadata:
+  name: knative-eventing
+  namespace: knative-eventing
