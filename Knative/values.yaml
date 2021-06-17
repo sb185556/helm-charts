@@ -1,6 +1,3 @@
 # Default values for Knative.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-# If this is set to false, the default networking layer is used (Istio)
-useKourier: true
